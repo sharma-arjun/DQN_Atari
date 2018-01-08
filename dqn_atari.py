@@ -57,7 +57,6 @@ def main():  # noqa: D103
 
         parser = argparse.ArgumentParser(description='Run DQN on Atari Breakout')
         parser.add_argument('--env', default='Enduro-v0', help='Atari env name')
-        parser.add_argument('-o', '--output', default='atari-v0', help='Directory to save data to')
         parser.add_argument('--seed', default=0, type=int, help='Random seed')
         parser.add_argument('--model_type', default='dqn', help='Model type: linear, dqn, double_linear, double_dqn')
         parser.add_arguement('--mode', default='train', help='Mode: train for training, test for testing')
@@ -122,7 +121,7 @@ def main():  # noqa: D103
                 dqn.restore_model(model_file)
 
                 # Evaluate the model.
-                dqn.evaluate(env,20,5000,'test',False,False,True)
+                dqn.evaluate(env, 20 ,5000, 'test', lambda x: True, False, True)
 
 if __name__ == '__main__':
         main()

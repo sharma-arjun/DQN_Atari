@@ -666,7 +666,7 @@ class DQNAgent:
                 folder_name = './monitor_' + self.model_type
                 if not os.path.exists(folder_name):
                         os.makedirs(folder_name)
-                env_mon = wrappers.Monitor(env, folder_name + '/' + env.spec._env_name + '-experiment-' + str(monitor_count),video_callable=vc_func, mode='evaluation', force=f)
+                env_mon = wrappers.Monitor(env, folder_name + '/' + env.spec._env_name + '-experiment-' + str(monitor_count), video_callable=vc_func, mode='evaluation', force=f)
                 for i_episode in range(num_episodes):
                         state[:,:,0] = self.preprocessor.process_state_for_memory(env_mon.reset(),size=1)
                         state[:,:,1] = self.preprocessor.process_state_for_memory(env_mon.step(0)[0],size=1) 
